@@ -40,7 +40,6 @@ void Receive(SOCKET fd,int& r) {
 	} while (r > 0);
 	
 }
-
 void Send(SOCKET fd,const int& r) {
 	
 	while (r > 0)
@@ -53,10 +52,8 @@ void Send(SOCKET fd,const int& r) {
 		send(fd, send_buffer.c_str(), strlen(send_buffer.c_str()), 0);
 	}	
 }
-
 int main()
-{	
-	
+{		
 	SOCKET listen_s;
 	int status = 1;
 	addrinfo *servinfo;
@@ -97,7 +94,6 @@ int main()
 	std::thread send_thread(Send,new_fd, std::ref<int>(status));
 	recv_thread.join();
 	send_thread.join();	
-	
 
 	system("pause");
 }
